@@ -1,11 +1,8 @@
-My id last digit is 8 and my resources are H and S.
+A good message
 
-My first class is 'Holographs' and the attributes of the class are
-holograph_name(string),
-creator(string), and 
-edition_number(number).
+Render link : https://s24wb78reddy.onrender.com
 
-My secound class is 'Seed' and the attributes of the class are 
-seed_name(string),
-origin(string), and
-germination_time(number).
+myclass = Holographs my attributes are
+holograph_name: (String)
+creator: (String)
+edition_number: (Number)

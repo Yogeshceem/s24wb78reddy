@@ -1,0 +1,16 @@
+// grid.pug
+
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  // Display query parameters
+  if query
+    p Query Parameters:
+      ul
+        li Rows: #{query.rows}
+        li Columns: #{query.cols}
+  else
+    p No query parameters provided.

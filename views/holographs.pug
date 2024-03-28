@@ -29,19 +29,12 @@ block content
               p
                 strong Edition Number:
                 span #{result.edition_number}
-              // Use a button element with a class and data attribute
-              button(type="button" class="buy-button" data-index=index) Buy
+              // Add a clickable button using anchor tag
+              a(href="#" onclick=`buy(${index})`) Buy
 
   script.
-    // Function to handle buy button click
-    document.addEventListener('DOMContentLoaded', function() {
-      // Add click event listener to all elements with class .buy-button
-      document.querySelectorAll('.buy-button').forEach(button => {
-        button.addEventListener('click', function() {
-          // Retrieve the index from the data-index attribute
-          const index = parseInt(this.dataset.index);
-          // Alert with the purchased holograph name
-          alert(`You purchased holograph ${results[index].holograph_name}.`);
-        });
-      });
-    });
+    function buy(index) {
+      console.log(`Buy function called with index: ${index}`);
+      alert(`You purchased holograph ${results[index].holograph_name}.`);
+    }
+

@@ -1,38 +1,36 @@
 extends layout
 
 block content
-  h1 Search Results - Holographs
-
   // Unbuffered server-side code to define search results
--
-  let results = [
-    { holograph_name: "Starlight Symphony", creator: "Avery Johnson", edition_number: 1 },
-    { holograph_name: "Dreamscape", creator: "Elena Rodriguez", edition_number: 2 },
-    { holograph_name: "Cosmic Illusion", creator: "Kai Chen", edition_number: 3 }
-  ]
+  -
+    let results = [
+      { holograph_name: "Starlight Symphony", creator: "Avery Johnson", edition_number: 1 },
+      { holograph_name: "Dreamscape", creator: "Elena Rodriguez", edition_number: 2 },
+      { holograph_name: "Cosmic Illusion", creator: "Kai Chen", edition_number: 3 }
+    ]
 
-// Outermost container with class container-fluid
-.container-fluid
-  // Middle div with class row
-  .row
-    // Unbuffered server-side code to iterate over results
-    each result, index in results
-      // Each result object is placed within its own div with class col-md-4
-      .col-md-4
-        .result
-          // Inner div for each object with class col-sm-2
-          .col-sm-2(onclick=`buy(${index})`)
-            p
-              strong Holograph Name:
-              span #{result.holograph_name}
-            p
-              strong Creator:
-              span #{result.creator}
-            p
-              strong Edition Number:
-              span #{result.edition_number}
+  // Outermost container with class container-fluid
+  .container-fluid
+    // Middle div with class row
+    .row
+      // Unbuffered server-side code to iterate over results
+      each result, index in results
+        // Each result object is placed within its own div with class col-md-4
+        .col-md-4
+          .result
+            // Inner div for each object with class col-sm-2
+            .col-sm-2(onclick=`buy(${index})`)
+              p
+                strong Holograph Name:
+                span #{result.holograph_name}
+              p
+                strong Creator:
+                span #{result.creator}
+              p
+                strong Edition Number:
+                span #{result.edition_number}
 
-script.
-  function buy(index) {
-    alert(`You purchased holograph ${results[index].holograph_name}.`);
-  }
+  script.
+    function buy(index) {
+      alert(`You purchased holograph ${results[index].holograph_name}.`);
+    }

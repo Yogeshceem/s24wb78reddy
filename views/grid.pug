@@ -1,16 +1,32 @@
-// grid.pug
-
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  // Step 3: Show the values of query.rows and query.cols
+  p The number of rows is #{query.rows} and the number of columns is #{query.cols}.
 
-  // Display query parameters
-  if query
-    p Query Parameters:
-      ul
-        li Rows: #{query.rows}
-        li Columns: #{query.cols}
+  // Step 4: Convert query.rows and query.cols to numbers
+  - let rows = Number(query.rows)
+  - let cols = Number(query.cols)
+
+
+  // Previous lines...
+
+  // Step 5: Check if rows and cols are in the range of 3 to 13
+  if rows < 3 || rows > 13
+    p Number of rows must be between 3 and 13.
   else
-    p No query parameters provided.
+    if cols < 3 || cols > 13
+      p Number of columns must be between 3 and 13.
+    else
+      // Step 9: Safe input, proceed to generate the table
+      table#outer
+        // Step 13: Loop over rows
+        - for(let i = 0; i < rows; i++)
+          tr#middle
+            // Step 15: Loop over columns
+            - for(let j = 0; j < cols; j++)
+              // Step 16: Compute cell value
+              - let value = Math.min(i + 1, j + 1)
+              td= value
+
+

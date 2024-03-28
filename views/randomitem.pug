@@ -3,4 +3,12 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
-  // Add your random item content here
+  p Here are some random holograms:
+
+  - var image_names = ["hologram1.jpg", "hologram2.jpeg", "hologram3.jpeg", "hologram4.jpeg", "hologram5.jpeg"]
+
+  - for (let i = 0; i < 3; i++)
+    - let random_index = Math.floor(Math.random() * image_names.length)
+    - let image_name = image_names[random_index]
+
+    img(src=`/images/${image_name}`, alt=`Random Hologram ${random_index}`, height="300", width="300")

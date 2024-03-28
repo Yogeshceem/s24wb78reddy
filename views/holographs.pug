@@ -19,7 +19,7 @@ block content
         .col-md-4
           .result
             // Inner div for each object with class col-sm-2
-            .col-sm-2(onclick=`buy(${index})`)
+            .col-sm-2
               p
                 strong Holograph Name:
                 span #{result.holograph_name}
@@ -29,8 +29,19 @@ block content
               p
                 strong Edition Number:
                 span #{result.edition_number}
+              // Use event delegation with data attributes
+              button(type="button" class="buy-button" data-index=index) Buy
 
   script.
-    function buy(index) {
-      alert(`You purchased holograph ${results[index].holograph_name}.`);
-    }
+    // Function to handle buy button click
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add click event listener to all elements with class .buy-button
+      document.querySelectorAll('.buy-button').forEach(button => {
+        button.addEventListener('click', function() {
+          // Retrieve the index from the data-index attribute
+          const index = parseInt(this.dataset.index);
+          // Alert with the purchased holograph name
+          alert(`You purchased holograph ${results[index].holograph_name}.`);
+        });
+      });
+    });

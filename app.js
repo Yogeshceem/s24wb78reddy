@@ -10,6 +10,8 @@ var holographsRouter = require('./routes/holographs');
 // Import the grid router
 var gridRouter = require('./routes/grid');
 var pickRouter = require('./routes/pick');
+const { default: mongoose } = require('mongoose');
+var db = mongoose.connection;
 
 
 
@@ -43,6 +45,10 @@ app.use('/pick', pickRouter);
 app.use(function(req, res, next) {
   next(createError(404));
 });
+
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.once("open", function(){
+  console.log("Connection to DB succeeded")});
 
 // error handler
 app.use(function(err, req, res, next) {

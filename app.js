@@ -25,6 +25,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+require('dotenv').config();
+const connectionString = process.env.MONGO_CON
+mongoose = require('mongoose');
+mongoose.connect(connectionString);
+
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/holographs', holographsRouter);

@@ -1,17 +1,17 @@
 extends layout
- 
+
 block content
   h1= title
-  form(id='holographForm', action="/resource/holographCreate", method="POST")
+  form(id='holographForm', action="/resource/holograph", method="POST")
     div.form-group
       label.holographAttr(for='holograph_name') holograph name
-      input#Robot_type(type='text', name='holograph_name')
+      input#holograph_name(type='text' name='holograph_name')
     div.form-group
       label.holographsAttr(for='creator') holograph creator
-      input#sprice(type='number', name='creator')
+      input#creator(type='text' name='creator')
     div.form-group
       label.holographsAttr(for='edition_number') holograph edition number
-      input#cost(type='text', name='edition_number')
+      input#edition_number(type='number' name='edition_number', value= edition_number)
     input(type="submit")
  
   script.

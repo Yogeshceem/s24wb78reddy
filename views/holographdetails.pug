@@ -1,10 +1,8 @@
 extends layout
 block content
-  h1= title
- 
-  if toShow == null
-    h2 No instance to show
-  else
+  - if (toShow != null)
+    h1(class='detailh1')= title
+    
     - let holographid = toShow._id
     - let holograph_name = toShow.holograph_name
     - let creator = toShow.creator
@@ -14,7 +12,7 @@ block content
         div.holographAttr.mr-3 holograph ID is:
         div #{holographid}
       div.row
-        div.RobotsAttr.mr-3 holograph name is:
+        div.holographAttr.mr-3 holograph name is:
         div #{holograph_name}
       div.row
         div.holographAttr.mr-3 holograph creator is:
@@ -22,3 +20,6 @@ block content
       div.row
         div.holographAttr.mr-3 holograph edition number is:
         div #{edition_number}
+  - else
+    h1 Holograph Details
+    h2 No instance to detail this is my code

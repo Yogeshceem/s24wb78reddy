@@ -1,0 +1,44 @@
+extends layout
+
+block content
+    h1= title
+
+    if (toShow == null)
+        h2 No instance to update
+    else
+        - let holographid = toShow._id
+        - let holograph_name = toShow.holograph_name
+        - let creator = toShow.creator
+        - let edition_number = toShow.edition_number
+        div.row(class='mb-2')
+            div.mr-1 ID is
+                div #{holographid}
+                - let actionid = "/resource/holograph/" + Robotsid
+                form(id='holographForm', action= actionid, method="POST")
+                    div.form-group
+                        label.holographAttr(for='holograph_name') holograph_name
+                        input#holograph_name(type='text' name='holograph_name', value= Robot_type)
+                    div.form-group
+                        label.holographAttr(for='creator') creator
+                        input#creator(type='text' name='creator', value= creator)
+                    div.form-group
+                        label.holographAttr(for='edition_number') edition_number
+                        input#edition_number(type='number' name='edition_number', value= edition_number)
+                    input(type="submit")
+    script.
+        document.forms['holographForm'].addEventListener('submit', (event) => {
+            event.preventDefault();
+            // TODO do something here to show user that form is being submitted
+            fetch(event.target.action, {
+                method: 'PUT',
+                body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+            }).then((resp) => {
+                return resp.text(); // or resp.text() or whatever the server sends
+            }).then((body) => {
+                alert("Update succeeded")
+                // TODO handle body
+            }).catch((error) => {
+                // TODO handle error
+                alert("Update failed " + error )
+            });
+        });

@@ -1,0 +1,24 @@
+extends layout
+block content
+  h1= title
+ 
+  if toShow == null
+    h2 No instance to show
+  else
+    - let holographid = toShow._id
+    - let holograph_name = toShow.holograph_name
+    - let creator = toShow.creator
+    - let edition_number = toShow.edition_number
+    div
+      div.row
+        div.holographAttr.mr-3 holograph ID is:
+        div #{holographid}
+      div.row
+        div.RobotsAttr.mr-3 holograph name is:
+        div #{holograph_name}
+      div.row
+        div.holographAttr.mr-3 holograph creator is:
+        div #{creator}
+      div.row
+        div.holographAttr.mr-3 holograph edition number is:
+        div #{edition_number}

@@ -11,6 +11,7 @@ router.get('/register', function(req, res) {
   res.render('register', { title: 'Holograph App Registration'});
 });
 
+
 router.post('/register', function(req, res) {
   Account.findOne({ username : req.body.username })
     .then(function (user){
@@ -60,4 +61,29 @@ router.get('/ping', function(req, res) {
   res.send('pong');
 });
 
+// A little function to check if we have an authorized user and continue on
+
+// redirect to login.
+const secured = (req, res, next) => {
+if (req.user){
+return next();
+}
+res.redirect("/login");
+}
+
+const Costume = require('../models/Holograph');
+
+router.put('/collections/:id', function(req, res) {
+  Costume.findByIdAndUpdate(req.params.id, req.body, {new: true})
+    .then(costume => {
+      res.redirect('/collections');
+    })
+    .catch(err => {
+      res.status(400).send("Unable to update the holograph");
+    });
+});
+
+router.post('/login', passport.authenticate('local'), function(req, res) {
+  res.redirect('/');
+  });
 module.exports = router;

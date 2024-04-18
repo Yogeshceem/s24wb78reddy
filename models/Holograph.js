@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { min, max } = require('mongoose');
 
 // Define holograph schema
 const holographSchema = new mongoose.Schema({

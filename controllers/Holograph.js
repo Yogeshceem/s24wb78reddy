@@ -4,7 +4,7 @@ var Holograph = require('../models/Holograph');
 exports.Holograph_list = async function (req, res) {
     try {
         Holograph = await Holograph.find();
-        res.send(theHolograph);
+        res.send(Holograph);
     }
     catch (err) {
         res.status(500);
@@ -31,7 +31,7 @@ exports.Holograph_create_post = function(req, res) {
     res.send('NOT IMPLEMENTED: Holograph create POST');
     };
 
-// Handle Icecream delete from on DELETE.
+// Handle holograph delete from on DELETE.
 exports.Holograph_delete = async function (req, res) {
     console.log("delete " + req.params.id)
     try {

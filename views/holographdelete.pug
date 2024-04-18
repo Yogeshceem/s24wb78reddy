@@ -9,7 +9,7 @@ block content
         - let holograph_name  = toShow.holograph_name
         - let creator  = toShow.creator
         - let edition_number  = toShow.edition_number
-        - let actionid = "/resource/holograph/" + holographid
+        - let actionid = "/resource/Holograph/" + holographid
         script.
             let actionid = "#{actionid}"; // Ensure actionid is a string
         div
@@ -30,7 +30,7 @@ block content
         script.
             function cancel() {
                 // Go back to the home page for the holograph collection
-                window.location.href='/holograph'
+                window.location.href='/Holograph'
             }
             function deleteOnid() {
                 console.log("starting delete")

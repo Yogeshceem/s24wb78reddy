@@ -1,0 +1,35 @@
+extends layout
+ 
+block content
+  h1= title
+  - let Holograph=results
+  //- button.btn( class="btn-primary ml-1", onclick= destinationcreate) Create
+  div(class="container-fluid")
+  div(class="row m-1")
+    each holograph in Holograph
+      - let destinationupdate = `dispatch(\"/holographs/update?id=${holograph._id}\")`
+      - let destinationcreate = `dispatchCreate(\"/holographs/create\")`
+      - let destinationdelete = `dispatchDelete(\"/holographs/delete?id=${holograph._id}\")`
+      - let destinationdetail = `dispatch(\"/holographs/detail/?id=${holograph._id}\")`
+      div(class="col-ml-1 btn btn-light") #{holograph._id} - #{holograph.holograph_name} - #{holograph.creator} - #{holograph.edition_number}
+ 
+          button.btn( class="btn-primary ml-1", onclick= destinationcreate) Create
+          button.btn( class="btn-secondary ml-1", onclick= destinationdetail) Details
+ 
+          button.btn( class="btn-info ml-1", onclick= destinationupdate) Update
+ 
+          button.btn( class="btn-danger ml-1", onclick= destinationdelete) Delete
+  script.
+      function dispatch(path){
+      window.location.href=path
+      }
+      function buy(itemNo)
+      {
+        alert(`You purchased Item ${itemNo+1}`)
+      }
+      function dispatchCreate(path){
+        window.location.href=path
+      }
+      function dispatchDelete(path){
+        window.location.href=path
+      }

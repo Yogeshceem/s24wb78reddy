@@ -13,8 +13,8 @@ block content
         div.row(class='mb-2')
             div.mr-1 ID is
                 div #{holographid}
-                - let actionid = "/resource/holograph/" + holographid
-                form(id='holographForm', action= actionid, method="POST")
+                - let actionid = "/resource/Holograph/" + holographid
+                form(id='holographForm', action= actionid, method="PUT")
                     div.form-group
                         label.holographAttr(for='holograph_name') holograph_name
                         input#holograph_name(type='text' name='holograph_name', value= holograph_name)

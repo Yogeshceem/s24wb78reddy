@@ -1,27 +1,20 @@
 var express = require('express');
 var router = express.Router();
+const Holograph_controller = require('../controllers/Holograph');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('Holograph', { title: 'Search Results Holograph' });
-});
+/* GET all Holographs */
+router.get('/', Holograph_controller.Holograph_view_all_Page);
 
-var express = require('express');
-const Holograph_controlers= require('../controllers/Holograph');
-var router = express.Router();
+/* GET detail view for a specific Holograph */
+router.get('/detail', Holograph_controller.Holograph_view_one_Page);
 
-router.get('/', Holograph_controlers.Holograph_view_all_Page );
+/* GET create Holograph form */
+router.get('/create', Holograph_controller.Holograph_create_Page);
 
-/* GET detail costume page */
-router.get('/detail', Holograph_controlers.Holograph_view_one_Page);
+/* GET update Holograph form */
+router.get('/update', Holograph_controller.Holograph_update_Page);
 
-/* GET create costume page */
-router.get('/create', Holograph_controlers.Holograph_create_Page);
+/* GET delete Holograph form */
+router.get('/delete', Holograph_controller.Holograph_delete_Page);
 
-/* GET create update page */
-router.get('/update', Holograph_controlers.Holograph_update_Page);
-
-/* GET delete costume page */
-router.get('/delete', Holograph_controlers.Holograph_delete_Page);
-
-module.exports = router;
+module.exports = router;
